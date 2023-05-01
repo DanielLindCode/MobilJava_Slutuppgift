@@ -108,24 +108,12 @@ class TranslatorActivity : AppCompatActivity() {
         Log.d(TAG, "startTranslation: setSourceLanguage: $sourceLanguageCode")
         Log.d(TAG, "startTranslation: setTargetLanguage: $targetLanguageCode")
 
-        // I think the error is coming from here
-        // I tried:
-        /*
-            .setSourceLanguage(TranslateLanguage.fromLanguageTag(sourceLanguageCode).toString())
-            .setTargetLanguage(TranslateLanguage.fromLanguageTag(targetLanguageCode).toString())
-
-            Thinking setSourceLanguage() only can take full Languge names such as "SWEDEN"
-         */
-
-        val sourceLanguageCodeISO = Locale(sourceLanguageCode).language
-        val targetLanguageCodeISO = Locale(targetLanguageCode).language
-
-        translatorOptions = TranslatorOptions.Builder()
-            .setSourceLanguage(sourceLanguageCodeISO)
-            .setTargetLanguage(targetLanguageCodeISO)
-            .build()
-
-        translator = Translation.getClient(translatorOptions)
+        translator = Translation.getClient(
+            TranslatorOptions.Builder()
+                .setSourceLanguage(sourceLanguageCode)
+                .setTargetLanguage(targetLanguageCode)
+                .build()
+        )
 
         val downloadConditions = DownloadConditions.Builder()
             .requireWifi()
@@ -176,11 +164,10 @@ class TranslatorActivity : AppCompatActivity() {
         for (languageCode in languageCodeList){
 
             val languageTitle = Locale(languageCode).displayLanguage
+            val modelLanguage = ModelLanguage(languageCode, languageTitle)
 
             Log.d(TAG, "loadAvailableLanguage: languageCode: $languageCode")
             Log.d(TAG, "loadAvailableLanguage: languageTitle: $languageTitle")
-
-            val modelLanguage = ModelLanguage(languageCode, languageTitle)
 
             languageArrayList!!.add(modelLanguage)
         }
@@ -204,11 +191,11 @@ class TranslatorActivity : AppCompatActivity() {
             sourceLanguageCode = languageArrayList!![position].languageCode
             sourceLanguageTitle = languageArrayList!![position].languageTitle
 
-            binding.srcLangChooseBtn.text = sourceLanguageTitle
-            binding.srcLangEt.hint = "Enter $sourceLanguageTitle"
-
             Log.d(TAG, "sourceLanguageChooser: sourceLanguageCode: $sourceLanguageCode ")
             Log.d(TAG, "sourceLanguageChooser: sourceLanguageTitle: $sourceLanguageTitle ")
+
+            binding.srcLangChooseBtn.text = sourceLanguageTitle
+            binding.srcLangEt.hint = "Enter $sourceLanguageTitle"
 
             false
         }
@@ -243,10 +230,12 @@ class TranslatorActivity : AppCompatActivity() {
     }
 
     private fun showToast(message: String){
+
             Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
     override fun onPause() {
+
         super.onPause()
 
         val sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
@@ -259,6 +248,7 @@ class TranslatorActivity : AppCompatActivity() {
     }
 
     override fun onResume() {
+
         super.onResume()
 
         val sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
