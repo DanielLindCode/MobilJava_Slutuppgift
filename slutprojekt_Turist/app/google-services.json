@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "399718226832",
+    "project_id": "turistapp-631ac",
+    "storage_bucket": "turistapp-631ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399718226832:android:3e57b5867784f4ea113115",
+        "android_client_info": {
+          "package_name": "com.grit.slutprojekt_turist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "399718226832-dquqd076lin58vpkd4vpjlkcaq7nf107.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoDoMK4iSiSXNLgqFN7dqn_xJZh8zxL9o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "399718226832-dquqd076lin58vpkd4vpjlkcaq7nf107.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

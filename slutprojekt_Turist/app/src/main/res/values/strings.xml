@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">slutprojekt_Turist</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="username">Username</string>
+    <string name="retype_your_password">Retype Your Password</string>
+    <string name="already_registered_sign_in_here">Already registered? Sign in here!</string>
+    <string name="not_a_member_register_here">Not a member? Register here!</string>
+    <string name="home">Home</string>
+    <string name="google_translate">Google Translate</string>
+    <string name="voice_to_text">Voice To Text</string>
+    <string name="logout">Logout</string>
+</resources>
